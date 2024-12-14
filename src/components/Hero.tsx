@@ -4,8 +4,10 @@ import HeroBg from '../assets/cite_banner.jpg';
 export default function Hero() {
   return (
     <div className="relative px-6 pt-14 lg:px-8">
-      <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-        <div className="text-center">
+      <img src={HeroBg} className="absolute inset-0 h-screen w-screen object-cover bg-gradient-to-l from-background-10 to-transparent" alt="" />
+
+      <div className="mx-auto max-w-7xl py-32 sm:py-48 lg:py-56 z-10">
+        <div className="text-center max-w-2xl">
           <h1 className="text-2xl font-bold tracking-tight text-text sm:text-4xl">
             Junior Philippine Student Society for Information Technology Education
           </h1>
