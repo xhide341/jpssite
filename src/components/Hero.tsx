@@ -4,13 +4,13 @@ import HeroBg from '../assets/cite_banner.jpg';
 export default function Hero() {
   return (
     <div className="relative px-6 pt-14 lg:px-8">
-      <div className="w-full max-w-7xl py-32 sm:py-48 lg:py-56 mx-auto">
+      <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
         <div className="text-center">
           <h1 className="text-2xl font-bold tracking-tight text-text sm:text-4xl">
             Junior Philippine Student Society for Information Technology Education
           </h1>
           <p className="mt-6 text-lg leading-8 opacity-80">
-            Student organization of JPSSITE that focuses on promoting the use of IT.
+            Transforming lives through quality Catholic Augustinian education
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <a
@@ -28,3 +28,4 @@ export default function Hero() {
     </div>
   );
 }
+

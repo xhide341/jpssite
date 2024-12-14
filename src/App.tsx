@@ -11,7 +11,7 @@ function App() {
       <EventBadge />      
       <GradientPattern />
       <main>
-        {/* Main content will go here */}        
+        {/* Main content will go here */}
         <Hero />
       </main>
       <ThemeToggle />
