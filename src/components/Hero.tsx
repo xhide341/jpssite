@@ -15,15 +15,14 @@ export default function Hero() {
             Transforming lives through quality Catholic Augustinian education
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <a
-              href="#"
+            <button
               className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:scale-1.05 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
-              Get started
-            </a>
-            <a href="#" className="text-sm font-semibold leading-6">
-              Learn more <span aria-hidden="true">→</span>
-            </a>
+              <a href="#">Get started</a>
+            </button>
+            <button className="text-sm font-semibold leading-6">
+              <a href="#">Learn more <span aria-hidden="true">→</span></a>
+            </button>
           </div>
         </div>
       </div>
