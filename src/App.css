@@ -1,7 +1,27 @@
+:root {
+  --primary: hsl(219.57, 50.54%, 36.47%);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --primary: hsl(219.57, 50.54%, 36.47%);
+    --background: #ffffff;
+    --text: #000000;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: hsl(219.57, 60%, 46.47%);
+    --background: #1a1a1a;
+    --text: #ffffff;
+  }
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 100%;
   text-align: center;
 }
 
