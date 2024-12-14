@@ -4,7 +4,7 @@ import HeroBg from '../assets/cite_banner.jpg';
 export default function Hero() {
   return (
     <div className="relative px-6 pt-14 lg:px-8">
-      <img src={HeroBg} className="absolute inset-0 h-screen w-screen object-cover bg-gradient-to-l from-transparent to-background-10" alt="" />
+      {/* <img src={HeroBg} className="absolute inset-0 h-screen w-screen object-cover bg-gradient-to-l from-transparent to-background-10" alt="" /> */}
 
       <div className="mx-auto max-w-7xl py-32 sm:py-48 lg:py-56 z-10">
         <div className="text-center max-w-2xl">
@@ -17,7 +17,7 @@ export default function Hero() {
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <a
               href="#"
-              className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:scale-1.05 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               Get started
             </a>
