@@ -16,14 +16,13 @@ useTexture.preload('https://assets.vercel.com/image/upload/contentful/image/e538
 export default function EventBadge() {
   const { debug } = useControls({ debug: false })
   return (
-    <div style={{ width: '100%', height: '400px' }}>
-      <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
+    <div className="w-full h-full z-10 absolute overflow-visible hidden lg:block">
+      <Canvas camera={{ position: [0, 0, 13], fov: 60 }}>
         <ambientLight intensity={Math.PI} />
         <Physics debug={debug} interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
           <Band />
         </Physics>
-        <Environment background blur={0.75}>
-          <color attach="background" args={['black']} />
+        <Environment>
           <Lightformer intensity={2} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
           <Lightformer intensity={3} color="white" position={[-1, -1, 1]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
           <Lightformer intensity={3} color="white" position={[1, 1, 1]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
@@ -53,9 +52,9 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   const [dragged, drag] = useState(false)
   const [hovered, hover] = useState(false)
 
-  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1])
-  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1])
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1])
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1.5])
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1.5])
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1.5])
   useSphericalJoint(j3, card, [[0, 0, 0], [0, 1.45, 0]])
 
   useEffect(() => {
@@ -113,7 +112,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 
   return (
     <>
-      <group position={[0, 4, 0]}>
+      <group position={[6, 10, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
           <BallCollider args={[0.1]} />
@@ -127,7 +126,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
         <RigidBody position={[2, 0, 0]} ref={card} {...segmentProps} type={dragged ? 'kinematicPosition' : 'dynamic'}>
           <CuboidCollider args={[0.8, 1.125, 0.01]} />
           <group
-            scale={2.25}
+            scale={3.0}
             position={[0, -1.2, -0.05]}
             onPointerOver={handlePointerOver}
             onPointerOut={handlePointerOut}
