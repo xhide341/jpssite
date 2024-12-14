@@ -4,7 +4,7 @@ import HeroBg from '../assets/cite_banner.jpg';
 export default function Hero() {
   return (
     <div className="relative px-6 pt-14 lg:px-8">
-      <img src={HeroBg} className="absolute inset-0 h-screen w-screen object-cover bg-gradient-to-l from-background-10 to-transparent" alt="" />
+      <img src={HeroBg} className="absolute inset-0 h-screen w-screen object-cover bg-gradient-to-l from-transparent to-background-10" alt="" />
 
       <div className="mx-auto max-w-7xl py-32 sm:py-48 lg:py-56 z-10">
         <div className="text-center max-w-2xl">
