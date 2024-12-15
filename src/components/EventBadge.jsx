@@ -15,9 +15,25 @@ useTexture.preload('https://assets.vercel.com/image/upload/contentful/image/e538
 
 export default function EventBadge() {
   const { debug } = useControls({ debug: false })
+  const [width, setWidth] = useState(window.innerWidth)
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const getCameraFOV = (width) => {
+    if (width >= 1280) return 60;
+    if (width >= 1024) return 65;
+    if (width >= 768) return 70;
+    if (width >= 640) return 75;
+    return 90;
+  }
+
   return (
-    <div className="w-full min-h-screen h-screen isolate transform-gpu z-10 absolute overflow-visible hidden lg:block">
-      <Canvas camera={{ position: [0, 0, 13], fov: 60 }}>
+    <div className="w-full h-screen isolate transform-gpu z-10 absolute overflow-visible">
+      <Canvas camera={{ position: [0, 0, 13], fov: getCameraFOV(width) }}>
         <ambientLight intensity={Math.PI} />
         <Physics debug={debug} interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
           <Band />
@@ -44,7 +60,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   const ang = new THREE.Vector3()
   const rot = new THREE.Vector3()
   const dir = new THREE.Vector3()
-  const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 2, linearDamping: 2 }
+  const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 4, linearDamping: 4 }
   const { nodes, materials } = useGLTF('https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/5huRVDzcoDwnbgrKUo1Lzs/53b6dd7d6b4ffcdbd338fa60265949e1/tag.glb')
   const texture = useTexture('https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/SOT1hmCesOHxEYxL7vkoZ/c57b29c85912047c414311723320c16b/band.jpg')
   const { width, height } = useThree((state) => state.size)
@@ -53,9 +69,9 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   const [hovered, hover] = useState(false)
 
   useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1.5])
-  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1.5])
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1.5])
-  useSphericalJoint(j3, card, [[0, 0, 0], [0, 1.45, 0]])
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1.0])
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1.0])
+  useSphericalJoint(j3, card, [[0, 0, 0], [0, 2.0, 0]])
 
   useEffect(() => {
     if (hovered) {
@@ -107,12 +123,29 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
     drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())))
   }
 
+  const getYPosition = (width) => {
+    if (width >= 1280) return 8;      // xl and above
+    if (width >= 1024) return 9;     // lg and above
+    if (width >= 768) return 9;
+    if (width >= 640) return 10;
+    return 14;            // for mobile             
+  }
+
+  const getXPosition = (width) => {
+    if (width >= 1440) return 6.5;      // 4k and above
+    if (width >= 1280) return 6;      // xl and above
+    if (width >= 1024) return 5.5;     // lg and above
+    if (width >= 768) return 4;
+    if (width >= 640) return 3.5;
+    return 2.5;                   // for mobile      
+  }
+
   curve.curveType = 'chordal'
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping
 
   return (
     <>
-      <group position={[6, 10, 0]}>
+      <group position={[getXPosition(width), getYPosition(width), 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
           <BallCollider args={[0.1]} />

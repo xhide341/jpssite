@@ -1,92 +1,71 @@
-import { useState } from 'react';
-import LCUP from '../assets/LCUP.png';
+import { useState, useRef, useEffect } from 'react';
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Header() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const indicatorRef = useRef<HTMLDivElement>(null);
+  const navItemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
+  const timeoutRef = useRef<NodeJS.Timeout>();
+
+  const updateIndicator = (index: number) => {
+    const currentItem = navItemsRef.current[index];
+    if (currentItem && indicatorRef.current) {
+      const itemRect = currentItem.getBoundingClientRect();
+      const navRect = currentItem.parentElement?.getBoundingClientRect();
+      if (navRect) {
+        indicatorRef.current.style.left = `${itemRect.left - navRect.left}px`;
+        indicatorRef.current.style.width = `${itemRect.width}px`;
+      }
+    }
+  };
+
+  const handleMouseEnter = (index: number) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
+      setActiveIndex(index);
+      updateIndicator(index);
+    }, 100); // 100ms delay
+  };
+
+  useEffect(() => {
+    updateIndicator(activeIndex);
+    const handleResize = () => updateIndicator(activeIndex);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [activeIndex]);
+
+  const navItems = [
+    { href: '#home', label: 'Home' },
+    { href: '#about', label: 'About' },
+    { href: '#events', label: 'Events' },
+    { href: '#members', label: 'Members' },
+    { href: '#contact', label: 'Contact' },
+  ];
 
   return (
-    <header className="sticky top-0 w-full bg-background dark:bg-black/30 dark:backdrop-blur-md shadow-md z-50">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
-            <img src={LCUP} alt="LCUP logo" className="mr-2 w-8 h-8" />
-            <span className="text-2xl font-bold text-primary">JPSSITE</span>            
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            <a href="#home" className="text-text hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
-              Home
-            </a>
-            <a href="#about" className="text-text hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
-              About
-            </a>
-            <a href="#events" className="text-text hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
-              Events
-            </a>
-            <a href="#members" className="text-text hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
-              Members
-            </a>
-            <a href="#contact" className="text-text hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
-              Contact
-            </a>
-          </nav>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-text hover:text-primary hover:bg-background/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-colors"
-            >
-              <span className="sr-only">Open main menu</span>
-              {/* Hamburger icon */}
-              <svg
-                className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              {/* Close icon */}
-              <svg
-                className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile menu */}
-        <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <a href="#home" className="text-text hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors">
-              Home
-            </a>
-            <a href="#about" className="text-text hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors">
-              About
-            </a>
-            <a href="#events" className="text-text hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors">
-              Events
-            </a>
-            <a href="#members" className="text-text hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors">
-              Members
-            </a>
-            <a href="#contact" className="text-text hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors">
-              Contact
-            </a>
-          </div>
-        </div>
-      </div>
+    <header className="fixed md:top-6 bottom-6 md:bottom-auto left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-lg z-50">
+      <nav className="hidden md:flex items-center justify-center px-2 bg-primary dark:bg-white backdrop-blur-3xl shadow-2xl rounded-3xl nav-container relative pointer-events-auto">
+        {navItems.map((item, index) => (
+          <a
+            key={item.href}
+            href={item.href}
+            ref={el => navItemsRef.current[index] = el}
+            className={`px-3 py-3.5 rounded-full text-sm font-gambetta text-custom-white dark:text-gray-900 tracking-wide font-light transition-colors nav-item ${
+              activeIndex === index ? 'active dark:text-custom-white ' : 'dark:text-custom-black'
+            }`}
+            onMouseEnter={() => handleMouseEnter(index)}
+          >
+            {item.label}
+          </a>
+        ))}
+        <div ref={indicatorRef} className="nav-indicator" />
+      </nav>
     </header>
   );
-};
-
-export default Header;
+}

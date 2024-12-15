@@ -9,16 +9,18 @@ export default {
     extend: {
       colors: {
         'primary': 'var(--primary)',
-        'primary-rgb': 'var(--primary-rgb)',
+        'text-foreground': 'var(--text-foreground)',
         'background': 'var(--background)',
         'text': 'var(--text)',
+        'custom-white': 'var(--custom-white)',
+        'custom-black': 'var(--custom-black)',
       },
       backgroundImage: {
         'hero-gradient': 'radial-gradient(80% 40% at 50% -20%, var(--primary), var(--background))',
       },
       fontFamily: {
-        'generalSans': ['GeneralSans', 'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
-        'gambetta': ['Gambetta-Regular', 'Gambetta-Medium', 'Gambetta-Light', 'serif']
+        'general-sans': ['GeneralSans', 'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
+        'gambetta': ['Gambetta-Regular', 'sans-serif']
       },
     },
   },

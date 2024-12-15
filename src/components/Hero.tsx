@@ -1,30 +1,42 @@
+import LCUP from '../assets/lcup.png';
+import heroSVG from '../assets/undraw_team.svg';
+
+  /**
+   * Hero component for the home page.
+   * 
+   * Displays a call-to-action to join JPSSITE, with a brief description of the organization.
+   * @returns A JSX element representing the Hero component.
+   */
 export default function Hero() {
   return (
-    <div className="px-6 pt-14 lg:px-8 relative">
-      <div className="max-w-7xl py-32 sm:py-48 lg:py-56">
-        <div className="text-center max-w-2xl mx-auto text-text">
-          <h4 className="text-2xl w-full font-bold tracking-tight sm:text-4xl relative">
-            Junior Philippine Student Society for Information Technology Education
-          </h4>
-          <p className="mt-6 text-lg leading-8 opacity-80">
-            Empowering the Next Generation of IT Professionals.
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6 relative z-50">
-            <button
-              type="button"
-              className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white pointer-events-auto shadow-sm hover:scale-105 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-            >
-              Join Now
-            </button>
-            <button
-              type="button"
-              className="text-sm font-semibold text-text leading-6 bg-transparent border-none hover:underline pointer-events-auto"
-            >
-              Learn more <span aria-hidden="true">→</span>
-            </button>
-          </div>
+    <section className="flex justify-center relative px-6 lg:px-8 min-h-screen flex items-center">
+      <div className="flex flex-col items-center max-w-2xl mx-auto text-center">
+        <div className="flex flex-col items-center gap-6 mb-8">
+          <img src={LCUP} alt="LCUP logo" className="w-20 h-20" />
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-wide text-foreground font-gambetta">JPSSITE</h1>
+        </div>
+        <h2 className="text-2xl sm:text-4xl font-bold tracking-wide font-general-sans">
+          Junior Philippine Student Society for Information Technology Education
+        </h2>
+        <p className="mt-6 text-lg opacity-80">
+          Empowering the Next Generation of IT Professionals
+        </p>
+        <div className="mt-8">
+          <button
+            type="button"
+            className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:opacity-90 transition-all"
+          >
+            Join Us
+          </button>
         </div>
       </div>
-    </div>
+      {/* <div className="max-w-2xl mx-auto">
+        <img 
+          src={heroSVG} 
+          alt="Team illustration" 
+          className="w-[500px] pointer-events-none select-none hidden lg:block"
+        />
+      </div> */}
+    </section>
   );
 }
