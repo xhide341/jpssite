@@ -3,11 +3,10 @@
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: GeneralSans, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   --primary: hsl(219.57, 50.54%, 36.47%);
-  --primary-rgb: 55, 84, 138;  /* RGB values for primary color */
   --foreground-rgb: 0, 0, 0;
   --background: #f2f2f2;
   --text: #000000;
@@ -15,7 +14,6 @@
 
 :root.dark {
   --primary: hsl(219.57, 60%, 46.47%);
-  --primary-rgb: 71, 108, 177;  /* RGB values for dark mode primary color */
   --foreground-rgb: 255, 255, 255;
   --background: #1a1a1a;
   --text: #f2f2f6;
@@ -37,47 +35,39 @@ html, body {
   padding: 0;
 }
 
-a {
-  font-weight: 500;
-  color: var(--primary);
-  text-decoration: inherit;
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('./assets/fonts/GeneralSans-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-a:hover {
-  opacity: 0.8;
+@font-face {
+  font-family: 'GeneralSans-Semibold';
+  src: url('./assets/fonts/GeneralSans-Semibold.otf');
+  font-style: normal;
+  font-display: swap;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: var(--primary);
-  color: white;
-  cursor: pointer;
-  transition: opacity 0.25s;
+@font-face {
+  font-family: 'Gambetta-Light';
+  src: url('./assets/fonts/Gambetta-Light.otf');
+  font-style: normal;
+  font-display: swap;
 }
 
-button:hover {
-  opacity: 0.9;
+@font-face {
+  font-family: 'Gambetta-Regular';
+  src: url('./assets/fonts/Gambetta-Regular.otf');
+  font-style: normal;
+  font-display: swap;
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+@font-face {
+  font-family: 'Gambetta-Medium';
+  src: url('./assets/fonts/Gambetta-Medium.otf');
+  font-style: normal;
+  font-display: swap;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-.dark a:hover {
-  color: #747bff;
-}
-
-.dark button {
-  background-color: #f9f9f9;
-}

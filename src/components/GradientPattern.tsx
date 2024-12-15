@@ -1,7 +1,7 @@
 
 export default function GradientPattern() {
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden isolate transform-gpu">
       <div className="absolute inset-0 bg-hero-gradient"></div>
       <svg 
         className="absolute inset-0 h-full w-full dark:stroke-white/5 stroke-primary/10 [mask-image:radial-gradient(75%_50%_at_top_center,white,transparent)]" 

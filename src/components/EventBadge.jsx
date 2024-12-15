@@ -16,7 +16,7 @@ useTexture.preload('https://assets.vercel.com/image/upload/contentful/image/e538
 export default function EventBadge() {
   const { debug } = useControls({ debug: false })
   return (
-    <div className="w-full h-full z-10 absolute overflow-visible hidden lg:block">
+    <div className="w-full min-h-screen h-screen isolate transform-gpu z-10 absolute overflow-visible hidden lg:block">
       <Canvas camera={{ position: [0, 0, 13], fov: 60 }}>
         <ambientLight intensity={Math.PI} />
         <Physics debug={debug} interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>

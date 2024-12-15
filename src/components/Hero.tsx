@@ -1,27 +1,26 @@
-import React from 'react';
-import HeroBg from '../assets/cite_banner.jpg';
-
 export default function Hero() {
   return (
-    <div className="relative px-6 pt-14 lg:px-8">
-      {/* <img src={HeroBg} className="absolute inset-0 h-screen w-screen object-cover bg-gradient-to-l from-transparent to-background-10" alt="" /> */}
-
-      <div className="mx-auto max-w-7xl py-32 sm:py-48 lg:py-56 z-10">
-        <div className="text-center max-w-2xl">
-          <h1 className="text-2xl font-bold tracking-tight text-text sm:text-4xl">
+    <div className="px-6 pt-14 lg:px-8 relative">
+      <div className="max-w-7xl py-32 sm:py-48 lg:py-56">
+        <div className="text-center max-w-2xl mx-auto text-text">
+          <h4 className="text-2xl w-full font-bold tracking-tight sm:text-4xl relative">
             Junior Philippine Student Society for Information Technology Education
-          </h1>
+          </h4>
           <p className="mt-6 text-lg leading-8 opacity-80">
-            Transforming lives through quality Catholic Augustinian education
+            Empowering the Next Generation of IT Professionals.
           </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+          <div className="mt-10 flex items-center justify-center gap-x-6 relative z-50">
             <button
-              className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:scale-1.05 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              type="button"
+              className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white pointer-events-auto shadow-sm hover:scale-105 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
-              <a href="#">Get started</a>
+              Join Now
             </button>
-            <button className="text-sm font-semibold leading-6">
-              <a href="#">Learn more <span aria-hidden="true">→</span></a>
+            <button
+              type="button"
+              className="text-sm font-semibold text-text leading-6 bg-transparent border-none hover:underline pointer-events-auto"
+            >
+              Learn more <span aria-hidden="true">→</span>
             </button>
           </div>
         </div>
@@ -29,4 +28,3 @@ export default function Hero() {
     </div>
   );
 }
-

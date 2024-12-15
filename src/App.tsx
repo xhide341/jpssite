@@ -6,14 +6,16 @@ import ThemeToggle from './components/ThemeToggle'
 
 function App() {
   return (
-    <div className="min-h-screen w-full bg-background text-text min-w-full relative">
-      <Header />
-      <EventBadge />      
+    <div className="min-h-screen h-screen w-full bg-background text-text min-w-full relative antialiased font-gambetta">
+      <Header />      
       <GradientPattern />
-      <main>
-        {/* Main content will go here */}
-        <Hero />
-      </main>
+      <div className="relative">
+        <EventBadge />
+        <main>
+          {/* Main content will go here */}
+          <Hero />
+        </main>
+      </div>
       <ThemeToggle />
     </div>
   )
