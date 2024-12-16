@@ -1,50 +1,36 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+JPSSITE - Junior Philippine Student Society for Information Technology Education
+A modern web application for JPSSITE student organization, developed as a final project for IT ELECTIVE 4.
+Overview
+JPSSITE is a student organization website that showcases information about the organization, events, and members. The site features a modern UI with dark/light theme support, smooth animations, and responsive design.
+Technologies Used
+| Category | Technologies |
+|----------|-------------|
+| Frontend Framework | React 18, Vite |
+| Language | TypeScript |
+| Styling | TailwindCSS, CSS3 |
+| 3D Graphics | Three.js, React Three Fiber |
+| Physics | @react-three/rapier |
+| Animation | Framer Motion |
+| Development | ESLint, PostCSS |
+| Build Tools | Vite |
+Key Features
+Responsive design for all screen sizes
+Dark/Light theme toggle with system preference detection
+3D interactive elements using Three.js
+Smooth animations and transitions
+Modern UI with gradient patterns
+Custom navigation with animated indicators
+Project Structure
+Getting Started
+Clone the repository
+Install dependencies:
+Start development server:
+Build for production:
+Contributing
+This project was developed as part of an academic requirement. Feel free to fork and modify for your own use.
+License
+MIT License
+Credits
+Developed as a final project for IT ELECTIVE 4 at La Consolacion University Philippines.
+---
+Note: This README is based on the codebase analysis showing a Vite + React + TypeScript project with various dependencies and features.
