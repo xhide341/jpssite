@@ -28,24 +28,12 @@ JPSSITE is a student organization website that showcases information about the o
 - Modern UI with gradient patterns
 - Custom navigation with animated indicators
 
-## Project Structure
-
-```
-- src/
-  - components/    # Reusable UI components
-  - pages/         # Application pages
-  - assets/        # Static assets (images, fonts, etc.)
-  - styles/        # Global and component-specific styles
-  - utils/         # Utility functions
-  - hooks/         # Custom React hooks
-```
-
 ## Getting Started
 
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/jpssite.git
+git clone https://github.com/xhide341/jpssite.git
 cd jpssite
 ```
 
