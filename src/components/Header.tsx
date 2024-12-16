@@ -56,8 +56,11 @@ export default function Header() {
             key={item.href}
             href={item.href}
             ref={el => navItemsRef.current[index] = el}
-            className={`px-3 py-3.5 rounded-full text-sm font-gambetta text-custom-white dark:text-gray-900 tracking-wide font-light transition-colors nav-item ${
-              activeIndex === index ? 'active dark:text-custom-white ' : 'dark:text-custom-black'
+            className={`px-3 py-3.5 rounded-full text-sm font-gambetta tracking-wide font-light 
+              transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] nav-item ${
+              activeIndex === index 
+                ? 'active text-custom-white dark:text-custom-white' 
+                : 'text-custom-white dark:text-custom-black'
             }`}
             onMouseEnter={() => handleMouseEnter(index)}
           >
