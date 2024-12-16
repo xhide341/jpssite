@@ -1,6 +1,7 @@
 import Header from './components/Header'
 import EventBadge from './components/EventBadge.jsx'
-import Hero from './components/Hero'
+import Hero from './components/hero-section'
+import AboutSection from './components/about-section'
 import GradientPattern from './components/GradientPattern'
 import ThemeToggle from './components/ThemeToggle'
 
@@ -12,6 +13,7 @@ function App() {
           {/* <EventBadge /> */}
           <GradientPattern />
           <Hero />
+          <AboutSection />
         </main>
       <Header />
       <ThemeToggle />

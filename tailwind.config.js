@@ -9,7 +9,7 @@ export default {
     extend: {
       colors: {
         'primary': 'var(--primary)',
-        'text-foreground': 'var(--text-foreground)',
+        'foreground': 'var(--text-foreground)',
         'background': 'var(--background)',
         'text': 'var(--text)',
         'custom-white': 'var(--custom-white)',
