@@ -15,7 +15,6 @@ function App() {
   return (
     <ThemeProvider
       defaultTheme="system"
-      enableSystem
       storageKey="vite-ui-theme"
     >
       <div className="min-h-screen flex flex-col text-text antialiased font-gambetta">          
