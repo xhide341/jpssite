@@ -102,8 +102,8 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed md:top-6 bottom-6 md:bottom-auto left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-lg z-50">
-      <nav className="hidden md:flex items-center justify-center px-2 bg-primary dark:bg-white backdrop-blur-3xl shadow-2xl rounded-3xl nav-container relative pointer-events-auto">
+    <header className="fixed md:top-6 bottom-6 md:bottom-auto left-1/2 -translate-x-1/2 bg-background/80 z-50">
+      <nav className="hidden md:flex items-center justify-center px-2 bg-primary dark:bg-white shadow-2xl rounded-3xl nav-container relative pointer-events-auto">
         {navItems.map((item, index) => (
           <a
             key={item.href}
