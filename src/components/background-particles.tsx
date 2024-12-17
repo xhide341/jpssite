@@ -7,7 +7,7 @@ import {
   type ISourceOptions,
 } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../context/theme-context";
 
 type ParticlesVariant = 'fullscreen' | 'bottom';
 
@@ -55,19 +55,22 @@ export default function BackgroundParticles({ variant = 'fullscreen', zIndex = 0
           value: "#ffffff",
         },
         move: {
-          direction: variant === 'bottom' ? "top" : "none",
+          direction: "top",
           enable: true,
           outModes: {
             default: "out",
           },
-          random: true,
-          speed: 0.3,
-          straight: false,
+          random: false,
+          speed: {
+            min: 0.3,
+            max: 1
+          },
+          straight: true,
         },
         number: {
           density: {
             enable: true,
-            area: variant === 'bottom' ? 800 : 800,
+            area: 800,
           },
           value: 88,
         },
