@@ -1,6 +1,5 @@
 import { motion, useMotionValue, useTransform, animate } from 'motion/react';
 import { useEffect } from 'react';
-import BackgroundParticles from '../background-particles';
 import chedLogo from '../../assets/images/ched-logo.png';
 import depedLogo from '../../assets/images/deped-logo.png';
 import onePieceLogo from '../../assets/images/onepiece-logo.png';
@@ -22,7 +21,6 @@ export default function Hero() {
 
   return (
     <section className="flex justify-center relative px-6 lg:px-8 min-h-screen flex items-center w-full max-w-full">
-      <BackgroundParticles variant="bottom" />
       <div className="flex flex-col items-center max-w-2xl mx-auto text-center">
         <h1 className="text-6xl sm:text-7xl font-bold tracking-wide text-foreground font-gambetta mb-6">JPSSITE</h1>
         <h2 className="text-2xl sm:text-4xl font-bold tracking-wide font-general-sans">

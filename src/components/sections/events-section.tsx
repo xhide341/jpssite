@@ -1,6 +1,7 @@
 import { motion, useScroll, useSpring } from 'motion/react';
 import { useTheme } from '../../context/ThemeContext';
 import { useRef } from 'react';
+import { BookOpen, Monitor, FileText, Trophy } from 'lucide-react';
 
 interface Event {
   id: number;
@@ -49,29 +50,13 @@ const events: Event[] = [
 const getEventIcon = (type: Event['type']) => {
   switch (type) {
     case 'workshop':
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-      );
+      return <BookOpen className="w-6 h-6" />;
     case 'hackathon':
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      );
+      return <Monitor className="w-6 h-6" />;
     case 'seminar':
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-        </svg>
-      );
+      return <FileText className="w-6 h-6" />;
     case 'competition':
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-        </svg>
-      );
+      return <Trophy className="w-6 h-6" />;
   }
 };
 
@@ -92,13 +77,13 @@ export default function EventsSection() {
 
   return (
     <section id="events" className="relative py-32 px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto" ref={containerRef}>
-        <h2 className="text-4xl font-bold text-center mb-24 font-gambetta">Upcoming Events</h2>
+      <div className="max-w-6xl mx-auto relative" ref={containerRef}>        
+        <h2 className="text-4xl font-bold text-center mb-24 font-gambetta">Organized Events</h2>
         <div className="relative">
           {/* Static background line */}
           <div 
             className={`
-              absolute left-1/2 transform -translate-x-1/2 w- h-full 
+              absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full 
               ${theme === 'light' 
                 ? 'bg-gray-200/80' 
                 : 'bg-gray-700/50'
@@ -159,7 +144,7 @@ export default function EventsSection() {
                   }
                 `}
               >
-                <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-primary/10 dark:bg-primary/20 text-primary mb-4">
+                <span className="inline-block py-1 rounded-full text-xs font-medium bg-primary/10 dark:bg-primary/20 text-primary mb-4">
                   {event.type.charAt(0).toUpperCase() + event.type.slice(1)}
                 </span>
                 <h3 className="text-2xl font-bold mb-3 text-foreground">{event.title}</h3>

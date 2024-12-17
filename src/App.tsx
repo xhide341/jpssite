@@ -5,20 +5,30 @@ import AboutSection from './components/sections/about-section'
 import GradientPattern from './components/GradientPattern'
 import ThemeToggle from './components/ThemeToggle'
 import EventsSection from './components/sections/events-section'
+import BackgroundParticles from './components/background-particles'
 
 function App() {
   return (
     <div className="min-h-screen flex flex-col text-text antialiased font-gambetta">          
         <main className="flex-1 relative">
-          {/* Main content will go here */}
-          {/* <EventBadge /> */}
-          <GradientPattern />
-          <Hero />
-          <AboutSection />
-          <EventsSection />
+          {/* Background containers */}
+          <div className="fixed inset-0">
+            <GradientPattern />
+          </div>
+
+          {/* Main content */}
+          <div className="relative">
+            <BackgroundParticles variant="bottom" zIndex={10} />
+            <Hero />
+          </div>
+          <div className="relative">
+            <BackgroundParticles variant="fullscreen" zIndex={10} />
+            <AboutSection />
+            <EventsSection />
+          </div>
         </main>
-      <Header />
-      <ThemeToggle />
+        <Header />
+        <ThemeToggle />
     </div>
   )
 }

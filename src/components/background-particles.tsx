@@ -13,29 +13,36 @@ type ParticlesVariant = 'fullscreen' | 'bottom';
 
 interface BackgroundParticlesProps {
   variant?: ParticlesVariant;
+  zIndex?: number;
 }
 
-export default function BackgroundParticles({ variant = 'fullscreen' }: BackgroundParticlesProps) {
+export default function BackgroundParticles({ variant = 'fullscreen', zIndex = 0 }: BackgroundParticlesProps) {
   const [init, setInit] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
+    console.log('Initializing particles:', { variant, theme, init });
+    
     initParticlesEngine(async (engine) => {
+      console.log('Loading slim engine...');
       await loadSlim(engine);
     }).then(() => {
+      console.log('Engine initialized successfully');
       setInit(true);
+    }).catch(error => {
+      console.error('Failed to initialize particles:', error);
     });
   }, []);
 
   const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
+    console.log('Particles loaded:', { container, variant });
   };
 
   const options: ISourceOptions = useMemo(
     () => ({
       fullScreen: {
         enable: false,
-        zIndex: 0,
+        zIndex: zIndex ? zIndex : 0,
       },
       background: {
         color: {
@@ -54,7 +61,7 @@ export default function BackgroundParticles({ variant = 'fullscreen' }: Backgrou
             default: "out",
           },
           random: true,
-          speed: variant === 'bottom' ? 0.5 : 0.3,
+          speed: 0.3,
           straight: false,
         },
         number: {
@@ -62,7 +69,7 @@ export default function BackgroundParticles({ variant = 'fullscreen' }: Backgrou
             enable: true,
             area: variant === 'bottom' ? 800 : 800,
           },
-          value: variant === 'bottom' ? 88 : 88,
+          value: 88,
         },
         opacity: {
           value: 0.5,
@@ -83,7 +90,7 @@ export default function BackgroundParticles({ variant = 'fullscreen' }: Backgrou
       },
       detectRetina: true,
     }),
-    [theme, variant],
+    [theme, variant, zIndex],
   );
 
   if (!init || theme === "light") {
@@ -91,7 +98,7 @@ export default function BackgroundParticles({ variant = 'fullscreen' }: Backgrou
   }
 
   return (
-    <div className={`absolute ${variant === 'bottom' ? 'bottom-0 h-[20vh] w-full' : 'inset-0'}`}>
+    <div className={`absolute ${variant === 'bottom' ? 'bottom-0 h-[50dvh] w-full' : 'inset-0'}`}>
       <Particles
         id={`tsparticles-${variant}`}
         particlesLoaded={particlesLoaded}
