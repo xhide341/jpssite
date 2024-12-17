@@ -44,7 +44,7 @@ export default function Header() {
     { href: '#home', label: 'Home' },
     { href: '#about', label: 'About' },
     { href: '#events', label: 'Events' },
-    { href: '#members', label: 'Members' },
+    { href: '#committee', label: 'Committee' },
     { href: '#contact', label: 'Contact' },
   ];
 

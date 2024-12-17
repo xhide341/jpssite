@@ -2,7 +2,7 @@ import { motion, useMotionValue, useTransform, animate } from 'motion/react';
 import { useEffect } from 'react';
 import chedLogo from '../../assets/images/ched-logo.png';
 import depedLogo from '../../assets/images/deped-logo.png';
-import onePieceLogo from '../../assets/images/onepiece-logo.png';
+import nasaLogo from '../../assets/images/nasa-logo.png';
 import surveyCorpsLogo from '../../assets/images/survey-corps-logo.png';
 
 export default function Hero() {
@@ -66,7 +66,7 @@ export default function Hero() {
               <img src={depedLogo} alt="DEPED" className="w-full h-full object-contain" />
             </div>
             <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-lg flex items-center justify-center p-2 sm:p-3 lg:p-0">
-              <img src={onePieceLogo} alt="One Piece" className="w-full h-full object-contain" />
+              <img src={nasaLogo} alt="NASA" className="w-full h-full object-contain" />
             </div>
           </div>
         </div>

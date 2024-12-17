@@ -76,7 +76,7 @@ export default function EventsSection() {
   });
 
   return (
-    <section id="events" className="relative py-32 px-6 lg:px-8">
+    <section id="events" className="relative pt-16 px-6 lg:px-8">
       <div className="max-w-6xl mx-auto relative" ref={containerRef}>        
         <h2 className="text-4xl font-bold text-center mb-24 font-gambetta">Organized Events</h2>
         <div className="relative">

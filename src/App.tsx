@@ -1,11 +1,13 @@
 import Header from './components/sections/header'
-import EventBadge from './components/EventBadge'
+// import EventBadge from './components/EventBadge'
 import Hero from './components/sections/hero-section'
 import AboutSection from './components/sections/about-section'
 import GradientPattern from './components/GradientPattern'
 import ThemeToggle from './components/ThemeToggle'
 import EventsSection from './components/sections/events-section'
 import BackgroundParticles from './components/background-particles'
+import CommitteeSection from './components/sections/committee-section'
+import ContactSection from './components/sections/contact-section'
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
             <BackgroundParticles variant="fullscreen" zIndex={10} />
             <AboutSection />
             <EventsSection />
+            <CommitteeSection />
+            <ContactSection />
           </div>
         </main>
         <Header />

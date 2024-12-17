@@ -101,3 +101,16 @@ html, body {
 :is(.dark .nav-item.active) ~ .nav-indicator {
   background-color: hsl(219.57, 40%, 46.47%);
 }
+
+/* Custom styles for committee swiper navigation */
+.committee-swiper-prev,
+.committee-swiper-next {
+  transition: all 0.3s ease;
+}
+
+/* Change opacity of navigation buttons when they're disabled */
+.committee-swiper-prev.swiper-button-disabled,
+.committee-swiper-next.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: default;
+}
