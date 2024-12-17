@@ -1,9 +1,10 @@
-import Header from './components/Header'
-import EventBadge from './components/EventBadge.jsx'
-import Hero from './components/hero-section'
-import AboutSection from './components/about-section'
+import Header from './components/sections/header'
+import EventBadge from './components/EventBadge'
+import Hero from './components/sections/hero-section'
+import AboutSection from './components/sections/about-section'
 import GradientPattern from './components/GradientPattern'
 import ThemeToggle from './components/ThemeToggle'
+import EventsSection from './components/sections/events-section'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <GradientPattern />
           <Hero />
           <AboutSection />
+          <EventsSection />
         </main>
       <Header />
       <ThemeToggle />

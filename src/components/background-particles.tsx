@@ -9,7 +9,13 @@ import {
 import { loadSlim } from "@tsparticles/slim";
 import { useTheme } from "../context/ThemeContext";
 
-export default function BackgroundParticles() {
+type ParticlesVariant = 'fullscreen' | 'bottom';
+
+interface BackgroundParticlesProps {
+  variant?: ParticlesVariant;
+}
+
+export default function BackgroundParticles({ variant = 'fullscreen' }: BackgroundParticlesProps) {
   const [init, setInit] = useState(false);
   const { theme } = useTheme();
 
@@ -42,21 +48,21 @@ export default function BackgroundParticles() {
           value: "#ffffff",
         },
         move: {
-          direction: "none",
+          direction: variant === 'bottom' ? "top" : "none",
           enable: true,
           outModes: {
             default: "out",
           },
           random: true,
-          speed: 0.3,
+          speed: variant === 'bottom' ? 0.5 : 0.3,
           straight: false,
         },
         number: {
           density: {
             enable: true,
-            area: 800,
+            area: variant === 'bottom' ? 800 : 800,
           },
-          value: 88,
+          value: variant === 'bottom' ? 88 : 88,
         },
         opacity: {
           value: 0.5,
@@ -77,7 +83,7 @@ export default function BackgroundParticles() {
       },
       detectRetina: true,
     }),
-    [theme],
+    [theme, variant],
   );
 
   if (!init || theme === "light") {
@@ -85,12 +91,12 @@ export default function BackgroundParticles() {
   }
 
   return (
-    <div className="absolute inset-0">
+    <div className={`absolute ${variant === 'bottom' ? 'bottom-0 h-[20vh] w-full' : 'inset-0'}`}>
       <Particles
-        id="tsparticles"
+        id={`tsparticles-${variant}`}
         particlesLoaded={particlesLoaded}
         options={options}
-        className="h-full"
+        className="h-full w-full"
       />
     </div>
   );

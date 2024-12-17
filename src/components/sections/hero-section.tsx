@@ -1,6 +1,10 @@
 import { motion, useMotionValue, useTransform, animate } from 'motion/react';
 import { useEffect } from 'react';
-import LCUP from '../assets/lcup.png';
+import BackgroundParticles from '../background-particles';
+import chedLogo from '../../assets/images/ched-logo.png';
+import depedLogo from '../../assets/images/deped-logo.png';
+import onePieceLogo from '../../assets/images/onepiece-logo.png';
+import surveyCorpsLogo from '../../assets/images/survey-corps-logo.png';
 
 export default function Hero() {
   const count = useMotionValue(0);
@@ -17,12 +21,10 @@ export default function Hero() {
   }, [count]);
 
   return (
-    <section className="flex justify-center relative px-6 lg:px-8 min-h-screen flex items-center">
+    <section className="flex justify-center relative px-6 lg:px-8 min-h-screen flex items-center w-full max-w-full">
+      <BackgroundParticles variant="bottom" />
       <div className="flex flex-col items-center max-w-2xl mx-auto text-center">
-        <div className="flex flex-col items-center gap-6 mb-8">
-          {/* <img src={LCUP} alt="LCUP logo" className="w-20 h-20" /> */}
-          <h1 className="text-6xl sm:text-7xl font-bold tracking-wide text-foreground font-gambetta">JPSSITE</h1>
-        </div>
+        <h1 className="text-6xl sm:text-7xl font-bold tracking-wide text-foreground font-gambetta mb-6">JPSSITE</h1>
         <h2 className="text-2xl sm:text-4xl font-bold tracking-wide font-general-sans">
           Junior Philippine Student Society for Information Technology Education
         </h2>
@@ -52,9 +54,24 @@ export default function Hero() {
           </motion.span>
           {' '}Consolanians registered
         </p>
-        <p className="absolute bottom-4 mx-auto text-gray-500">
-          This website is not affiliated with the official university
-        </p>
+
+        <div className="mt-8 sm:mt-12 lg:mt-16">
+          <p className="text-sm text-gray-500 mb-4 sm:mb-6">In partnership with</p>
+          <div className="flex items-center justify-center gap-4 sm:gap-6 lg:gap-8 flex-wrap">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-lg flex items-center justify-center p-2 sm:p-3 lg:p-0">
+              <img src={surveyCorpsLogo} alt="Survey Corps" className="w-full h-full object-contain" />
+            </div>
+            <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-lg flex items-center justify-center p-2 sm:p-3 lg:p-0">
+              <img src={chedLogo} alt="CHED" className="w-full h-full object-contain" />
+            </div>
+            <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-lg flex items-center justify-center p-2 sm:p-3 lg:p-0">
+              <img src={depedLogo} alt="DEPED" className="w-full h-full object-contain" />
+            </div>
+            <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-lg flex items-center justify-center p-2 sm:p-3 lg:p-0">
+              <img src={onePieceLogo} alt="One Piece" className="w-full h-full object-contain" />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
