@@ -26,9 +26,9 @@ const images = [
  */
 export default function AboutSection() {
   return (
-    <section className="relative flex justify-center px-6 lg:px-8 max-h-screen h-[80dvh] overflow-hidden">
+    <section className="relative flex justify-center px-6 lg:px-8 min-h-[80dvh] py-16 lg:py-24">
       <BackgroundParticles variant="fullscreen" />
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start z-20">
         {/* Left Column - Text Content */}
         <div className="space-y-4">
           <Accordion type="multiple" className="w-full" defaultValue={["mission", "vision", "goals"]}>
@@ -69,7 +69,7 @@ export default function AboutSection() {
         </div>
 
         {/* Right Column - Image Grid */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 h-fit">
           {images.map((image, index) => (
             <div 
               key={index}
