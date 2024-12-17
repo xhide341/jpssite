@@ -76,24 +76,20 @@ export default function EventsSection() {
   });
 
   return (
-    <section id="events" className="relative pt-16 px-6 lg:px-8">
+    <section id="events" className="relative pt-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto relative" ref={containerRef}>        
-        <h2 className="text-4xl font-bold text-center mb-24 font-gambetta">Organized Events</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16 sm:mb-24 font-gambetta">Organized Events</h2>
         <div className="relative">
-          {/* Static background line */}
+          {/* Timeline lines - Hide on mobile */}
           <div 
             className={`
-              absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full 
-              ${theme === 'light' 
-                ? 'bg-gray-200/80' 
-                : 'bg-gray-700/50'
-              }
+              absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full hidden sm:block
+              ${theme === 'light' ? 'bg-gray-200/80' : 'bg-gray-700/50'}
             `} 
           />
 
-          {/* Single animated progress line */}
           <motion.div 
-            className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-primary"
+            className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-primary hidden sm:block"
             style={{
               originY: 0,
               scaleY,
@@ -109,18 +105,27 @@ export default function EventsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className={`relative mb-24 ${
-                index % 2 === 0 
-                  ? 'pr-[calc(50%+2rem)]' 
-                  : 'pl-[calc(50%+2rem)] ml-auto'
-              }`}
+              className={`
+                relative mb-16 sm:mb-24
+                sm:w-1/2 
+                ${index % 2 === 0 
+                  ? 'sm:pr-8 w-full' 
+                  : 'sm:pl-8 ml-auto w-full'
+                }
+              `}
             >
               {/* Timeline dot */}
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/4 z-10">
+              <div className={`
+                absolute top-0 z-10
+                ${index % 2 === 0 
+                  ? 'left-4 sm:left-auto sm:right-0 sm:translate-x-1/2' 
+                  : 'left-4 sm:left-0 sm:-translate-x-1/2'
+                }
+              `}>
                 <motion.div 
                   whileHover={{ scale: 1.2 }}
                   className={`
-                    w-14 h-14 rounded-full flex items-center justify-center
+                    w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center
                     ${theme === 'light'
                       ? 'bg-white border border-gray-100'
                       : 'bg-gray-800 border border-gray-700'
@@ -137,7 +142,7 @@ export default function EventsSection() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 className={`
-                  relative p-8 rounded-xl shadow-lg max-w-xl mx-4
+                  relative p-6 sm:p-8 rounded-xl shadow-lg ml-16 sm:ml-0
                   ${theme === 'light'
                     ? 'bg-white border border-gray-100'
                     : 'bg-gray-800 border border-gray-700'
