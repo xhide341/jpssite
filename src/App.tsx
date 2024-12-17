@@ -9,11 +9,17 @@ import BackgroundParticles from './components/background-particles'
 import CommitteeSection from './components/sections/committee-section'
 import ContactSection from './components/sections/contact-section'
 import FooterSection from './components/sections/footer-section'
+import { ThemeProvider } from './components/theme-provider'
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col text-text antialiased font-gambetta">          
-        <main className="flex-1 relative">
+    <ThemeProvider
+      defaultTheme="system"
+      enableSystem
+      storageKey="vite-ui-theme"
+    >
+      <div className="min-h-screen flex flex-col text-text antialiased font-gambetta">          
+        <main className="flex-1">
           {/* Background containers */}
           <div className="fixed inset-0">
             <GradientPattern />
@@ -46,7 +52,8 @@ function App() {
         </main>
         <Header />
         <ThemeToggle />
-    </div>
+      </div>
+    </ThemeProvider>
   )
 }
 

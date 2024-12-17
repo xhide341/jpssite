@@ -1,5 +1,5 @@
 import { motion, useScroll, useSpring } from 'motion/react';
-import { useTheme } from '../../context/theme-context';
+import { useTheme } from '../theme-provider';
 import { useRef } from 'react';
 import { BookOpen, Monitor, FileText, Trophy } from 'lucide-react';
 

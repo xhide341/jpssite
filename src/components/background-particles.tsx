@@ -7,7 +7,7 @@ import {
   type ISourceOptions,
 } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
-import { useTheme } from "../context/theme-context";
+import { useTheme } from "./theme-provider";
 
 type ParticlesVariant = 'fullscreen' | 'bottom';
 
