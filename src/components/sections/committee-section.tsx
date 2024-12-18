@@ -16,20 +16,20 @@ const SocialIcon = ({ href, icon: Icon, label }: { href: string; icon: any; labe
 
 export default function CommitteeSection() {
   return (
-    <section className="flex justify-center relative px-6 lg:px-8 min-h-screen flex items-center w-full max-w-full">
+    <section className="flex justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 min-h-screen w-full">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="container mx-auto px-4 relative"
+        className="container mx-auto relative"
       >
-        <h2 className="text-4xl font-bold text-center mb-4">Meet the Executive Committee</h2>
-        <p className="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-3 sm:mb-4">Meet the Executive Committee</h2>
+        <p className="text-center text-gray-600 dark:text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base">
           Get to know our dedicated team members who work tirelessly to make our community thrive.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
           {committeeMembers.map((member, index) => (
             <motion.div
               key={index}
@@ -42,12 +42,12 @@ export default function CommitteeSection() {
               <img
                 src={member.image}
                 alt={member.name}
-                className="w-full h-64 object-contain hover:scale-105 transition-all duration-300"
+                className="w-full h-40 sm:h-64 object-contain hover:scale-105 transition-all duration-300"
               />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">{member.position}</p>
-                <div className="flex gap-4 justify-center">
+              <div className="p-3 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-semibold mb-1">{member.name}</h3>
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-3 sm:mb-4">{member.position}</p>
+                <div className="flex gap-2 sm:gap-4 justify-center">
                   {member.socials.facebook && (
                     <SocialIcon href={member.socials.facebook} icon={Facebook} label="Facebook Profile" />
                   )}
