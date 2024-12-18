@@ -107,25 +107,25 @@ export default function EventsSection() {
               transition={{ duration: 0.5, delay: index * 0.2 }}
               className={`
                 relative mb-16 sm:mb-24
-                sm:w-1/2 
+                sm:w-1/2 w-full
                 ${index % 2 === 0 
-                  ? 'sm:pr-8 w-full' 
-                  : 'sm:pl-8 ml-auto w-full'
+                  ? 'sm:pr-8' 
+                  : 'sm:pl-8 ml-auto'
                 }
               `}
             >
-              {/* Timeline dot */}
+              {/* Timeline dot - Only visible on sm and up */}
               <div className={`
-                absolute top-0 z-10
+                absolute top-0 z-10 hidden sm:block
                 ${index % 2 === 0 
-                  ? 'left-4 sm:left-auto sm:right-0 sm:translate-x-1/2' 
-                  : 'left-4 sm:left-0 sm:-translate-x-1/2'
+                  ? 'sm:right-0 sm:translate-x-1/2' 
+                  : 'sm:left-0 sm:-translate-x-1/2'
                 }
               `}>
                 <motion.div 
                   whileHover={{ scale: 1.2 }}
                   className={`
-                    w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center
+                    w-14 h-14 rounded-full flex items-center justify-center
                     ${theme === 'light'
                       ? 'bg-white border border-gray-100'
                       : 'bg-gray-800 border border-gray-700'
@@ -142,16 +142,37 @@ export default function EventsSection() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 className={`
-                  relative p-6 sm:p-8 rounded-xl shadow-lg ml-16 sm:ml-0
+                  relative p-6 sm:p-8 rounded-xl shadow-lg
                   ${theme === 'light'
                     ? 'bg-white border border-gray-100'
                     : 'bg-gray-800 border border-gray-700'
                   }
                 `}
               >
-                <span className="inline-block py-1 rounded-full text-xs font-medium bg-primary/10 dark:bg-primary/20 text-primary mb-4">
+                {/* Icon inside card - Only visible on mobile */}
+                <div className="flex items-center mb-4 sm:hidden">
+                  <div className={`
+                    w-12 h-12 rounded-full flex items-center justify-center mr-2
+                    ${theme === 'light'
+                      ? 'bg-white border border-gray-100'
+                      : 'bg-gray-800 border border-gray-700'
+                    }
+                  `}>
+                    <div className="text-primary">
+                      {getEventIcon(event.type)}
+                    </div>
+                  </div>
+                  <span className="text-sm font-medium bg-primary/10 dark:bg-primary/20 text-primary">
+                    {event.type.charAt(0).toUpperCase() + event.type.slice(1)}
+                  </span>
+                </div>
+
+                {/* Type badge - Only visible on sm and up */}
+                <span className="hidden sm:inline-block text-sm font-medium bg-primary/10 dark:bg-primary/20 text-primary mb-4">
                   {event.type.charAt(0).toUpperCase() + event.type.slice(1)}
                 </span>
+
+                {/* Rest of the card content remains unchanged */}
                 <h3 className="text-2xl font-bold mb-3 text-foreground">{event.title}</h3>
                 <p className="text-sm text-primary mb-4 font-medium">{event.date}</p>
                 <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
